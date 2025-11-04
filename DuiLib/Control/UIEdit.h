@@ -52,7 +52,7 @@ namespace DuiLib
 		void SetReplaceSel(LPCTSTR lpszReplace);
 
 		void SetTipValue(LPCTSTR pStrTipValue);
-		LPCTSTR GetTipValue();
+		CDuiString GetTipValue();
 		void SetTipValueColor(LPCTSTR pStrColor);
 		DWORD GetTipValueColor();
 

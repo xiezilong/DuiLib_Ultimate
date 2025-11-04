@@ -2541,7 +2541,7 @@ namespace DuiLib {
 		return UIFLAG_WANTRETURN | ((IsEnabled() && m_nLinks > 0) ? UIFLAG_SETCURSOR : 0);
 	}
 
-	LPCTSTR CListTextElementUI::GetText(int iIndex) const
+	CDuiString CListTextElementUI::GetText(int iIndex) const
 	{
 		CDuiString* pText = static_cast<CDuiString*>(m_aTexts.GetAt(iIndex));
 		if (pText) {
@@ -2549,7 +2549,7 @@ namespace DuiLib {
 				return pText->GetData();
 			return CResourceManager::GetInstance()->GetText(*pText);
 		}
-		return NULL;
+		return L"";
 	}
 
 	void CListTextElementUI::SetText(int iIndex, LPCTSTR pstrText)

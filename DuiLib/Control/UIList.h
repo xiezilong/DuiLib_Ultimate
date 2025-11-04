@@ -448,7 +448,7 @@ namespace DuiLib {
 		LPVOID GetInterface(LPCTSTR pstrName);
 		UINT GetControlFlags() const;
 
-		LPCTSTR GetText(int iIndex) const;
+		CDuiString GetText(int iIndex) const;
 		void SetText(int iIndex, LPCTSTR pstrText);
 
 		DWORD GetTextColor(int iIndex) const;
