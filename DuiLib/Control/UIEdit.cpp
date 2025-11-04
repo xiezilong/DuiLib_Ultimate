@@ -557,8 +557,18 @@ namespace DuiLib
 
 	CDuiString CEditUI::GetTipValue()
 	{
-		if (!IsResourceText()) return m_sTipValue;
+		if (!IsTipResourceText()) return m_sTipValue;
 		return CResourceManager::GetInstance()->GetText(m_sTipValue);
+	}
+
+	void CEditUI::SetTipResourceText(bool bTipResourceText)
+	{
+		m_bTipResourceText = bTipResourceText;
+	}
+
+	bool CEditUI::IsTipResourceText() const
+	{
+		return m_bTipResourceText;
 	}
 
 	void CEditUI::SetTipValueColor( LPCTSTR pStrColor )
@@ -634,7 +644,8 @@ namespace DuiLib
 		else if( _tcsicmp(pstrName, _T("disabledimage")) == 0 ) SetDisabledImage(pstrValue);
 		else if( _tcsicmp(pstrName, _T("tipvalue")) == 0 ) SetTipValue(pstrValue);
 		else if( _tcsicmp(pstrName, _T("tipvaluecolor")) == 0 ) SetTipValueColor(pstrValue);
-		else if( _tcsicmp(pstrName, _T("nativetextcolor")) == 0 ) SetNativeEditTextColor(pstrValue);
+        else if (_tcsicmp(pstrName, _T("nativetextcolor")) == 0) SetNativeEditTextColor(pstrValue);
+        else if (_tcsicmp(pstrName, _T("tipresourcetext")) == 0) SetTipResourceText(_tcsicmp(pstrValue, _T("true")) == 0);
 		else if( _tcsicmp(pstrName, _T("nativebkcolor")) == 0 ) {
 			if( *pstrValue == _T('#')) pstrValue = ::CharNext(pstrValue);
 			LPTSTR pstr = NULL;

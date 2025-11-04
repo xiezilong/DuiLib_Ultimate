@@ -53,6 +53,9 @@ namespace DuiLib
 
 		void SetTipValue(LPCTSTR pStrTipValue);
 		CDuiString GetTipValue();
+        bool IsTipResourceText() const;
+        void SetTipResourceText(bool bTipResourceText);
+
 		void SetTipValueColor(LPCTSTR pStrColor);
 		DWORD GetTipValueColor();
 
@@ -87,6 +90,7 @@ namespace DuiLib
 		DWORD m_dwEditbkColor;
 		DWORD m_dwEditTextColor;
 		int m_iWindowStyls;
-	};
+        bool m_bTipResourceText;
+    };
 }
 #endif // __UIEDIT_H__
