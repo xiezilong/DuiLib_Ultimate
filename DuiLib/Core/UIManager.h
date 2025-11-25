@@ -1,3 +1,4 @@
+#include <windef.h>
 #ifndef __UIMANAGER_H__
 #define __UIMANAGER_H__
 
@@ -262,6 +263,9 @@ namespace DuiLib {
 		void SetShowUpdateRect(bool show);
 		bool IsNoActivate();
 		void SetNoActivate(bool bNoActivate);
+        SIZE GetFixedSize();
+        void SetFixedSize(int cx, int cy);
+		bool IsFixedSize() const;
 
 		BYTE GetOpacity() const;
 		void SetOpacity(BYTE nOpacity);
@@ -509,6 +513,8 @@ namespace DuiLib {
 		bool m_bUpdateNeeded;
 		bool m_bFocusNeeded;
 		bool m_bOffscreenPaint;
+		SIZE m_szFixedSize;
+		bool m_bUseFixedSize = false;
 		
 		BYTE m_nOpacity;
 		bool m_bLayered;

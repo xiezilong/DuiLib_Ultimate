@@ -249,6 +249,12 @@ namespace DuiLib {
 							int cy = _tcstol(pstr + 1, &pstr, 10);    ASSERT(pstr); 
 							pManager->SetMaxInfo(cx, cy);
 						}
+                        else if (_tcsicmp(pstrName, _T("fixedsize")) == 0) {
+                            LPTSTR pstr = NULL;
+                            int cx = _tcstol(pstrValue, &pstr, 10);  ASSERT(pstr);
+                            int cy = _tcstol(pstr + 1, &pstr, 10);    ASSERT(pstr);
+                            pManager->SetFixedSize(cx, cy);
+                        }
 						else if( _tcsicmp(pstrName, _T("showdirty")) == 0 ) {
 							pManager->SetShowUpdateRect(_tcsicmp(pstrValue, _T("true")) == 0);
 						} 

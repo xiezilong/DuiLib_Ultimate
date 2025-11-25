@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include <zmouse.h>
+#include "UIManager.h"
 
 #pragma warning(push)
 #pragma warning(disable:4838 4244)
@@ -764,6 +765,23 @@ namespace DuiLib {
 	void CPaintManagerUI::SetNoActivate(bool bNoActivate)
 	{
 		m_bNoActivate = bNoActivate;
+	}
+
+	SIZE CPaintManagerUI::GetFixedSize()
+	{
+		return m_szFixedSize;
+	}
+
+	void CPaintManagerUI::SetFixedSize(int cx, int cy)
+	{
+        m_szFixedSize.cx = cx;
+        m_szFixedSize.cy = cy;
+        m_bUseFixedSize = (cx != 0 && cy != 0);
+	}
+
+	bool CPaintManagerUI::IsFixedSize() const
+	{
+		return m_bUseFixedSize;
 	}
 
 	BYTE CPaintManagerUI::GetOpacity() const

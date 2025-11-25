@@ -213,10 +213,21 @@ namespace DuiLib
 		lpMMI->ptMaxPosition.y	= rcWork.top;
 		lpMMI->ptMaxSize.x = rcWork.right - rcWork.left;
 		lpMMI->ptMaxSize.y = rcWork.bottom - rcWork.top;
-		lpMMI->ptMaxTrackSize.x = m_pm.GetMaxInfo().cx == 0?rcWork.right - rcWork.left:m_pm.GetMaxInfo().cx;
-		lpMMI->ptMaxTrackSize.y = m_pm.GetMaxInfo().cy == 0?rcWork.bottom - rcWork.top:m_pm.GetMaxInfo().cy;
-		lpMMI->ptMinTrackSize.x = m_pm.GetMinInfo().cx;
-		lpMMI->ptMinTrackSize.y = m_pm.GetMinInfo().cy;
+
+		if (m_pm.IsFixedSize())
+		{
+			lpMMI->ptMaxTrackSize.x = m_pm.GetFixedSize().cx;
+            lpMMI->ptMaxTrackSize.y = m_pm.GetFixedSize().cy;
+            lpMMI->ptMinTrackSize.x = m_pm.GetFixedSize().cx;
+            lpMMI->ptMinTrackSize.y = m_pm.GetFixedSize().cy;
+		}
+		else
+		{
+            lpMMI->ptMaxTrackSize.x = m_pm.GetMaxInfo().cx == 0 ? rcWork.right - rcWork.left : m_pm.GetMaxInfo().cx;
+            lpMMI->ptMaxTrackSize.y = m_pm.GetMaxInfo().cy == 0 ? rcWork.bottom - rcWork.top : m_pm.GetMaxInfo().cy;
+            lpMMI->ptMinTrackSize.x = m_pm.GetMinInfo().cx;
+            lpMMI->ptMinTrackSize.y = m_pm.GetMinInfo().cy;
+		}
 
 		bHandled = TRUE;
 		return 0;
@@ -389,7 +400,7 @@ namespace DuiLib
 		case WM_NCLBUTTONDOWN:
 		case WM_NCLBUTTONUP:
 		case WM_NCLBUTTONDBLCLK: {
-			if (wParam == HTMAXBUTTON) {
+			if (wParam == HTMAXBUTTON ||  (WM_NCLBUTTONDBLCLK == uMsg && m_pm.IsFixedSize())) {
 				POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
 				::ScreenToClient(m_hWnd, &pt);
 				LPARAM param = MAKELPARAM(pt.x, pt.y);
