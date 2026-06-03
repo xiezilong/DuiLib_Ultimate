@@ -44,7 +44,7 @@ public:// UI初始化
 public:// 接口回调
 	CControlUI* CreateControl(LPCTSTR pstrClass);
 	virtual BOOL Receive(SkinChangedParam param);
-	LPCTSTR QueryControlText(LPCTSTR lpstrId, LPCTSTR lpstrType);
+	CDuiString QueryControlText(LPCTSTR lpstrId, LPCTSTR lpstrType);
 
 public:// UI通知消息
 	void Notify(TNotifyUI& msg);

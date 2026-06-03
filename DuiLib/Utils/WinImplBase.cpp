@@ -39,9 +39,9 @@ namespace DuiLib
 		return NULL;
 	}
 
-	LPCTSTR WindowImplBase::QueryControlText(LPCTSTR lpstrId, LPCTSTR lpstrType)
+	CDuiString WindowImplBase::QueryControlText(LPCTSTR lpstrId, LPCTSTR lpstrType)
 	{
-		return NULL;
+		return L"";
 	}
 
 	LRESULT WindowImplBase::MessageHandler(UINT uMsg, WPARAM wParam, LPARAM /*lParam*/, bool& /*bHandled*/)

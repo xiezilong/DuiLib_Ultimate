@@ -298,7 +298,7 @@ void CMainWnd::OnFinalMessage(HWND hWnd)
 	__super::OnFinalMessage(hWnd);
 }
 
-LPCTSTR CMainWnd::QueryControlText(LPCTSTR lpstrId, LPCTSTR lpstrType)
+CDuiString CMainWnd::QueryControlText(LPCTSTR lpstrId, LPCTSTR lpstrType)
 {
 	CDuiString sLanguage = CResourceManager::GetInstance()->GetLanguage();
 	if(sLanguage == _T("en")){
@@ -318,7 +318,7 @@ LPCTSTR CMainWnd::QueryControlText(LPCTSTR lpstrId, LPCTSTR lpstrType)
 		}
 	}
 
-	return NULL;
+	return L"";
 }
 
 void CMainWnd::Notify(TNotifyUI& msg)
